@@ -1,10 +1,30 @@
 from flask import Flask, request, jsonify
+import random
+
 
 app = Flask(__name__)
 
-def generate_quotes(num):
-    """select num of quotes randomly from quotes.txt""" 
-    return 0
+quotes_used = set()
+
+
+def generate_quotes(num) -> list:
+    """select num of quotes randomly from quotes.txt"""
+
+    quotes_list = []
+    with open("quotes.txt", "r") as file:
+        content = file.read()
+
+    global quotes_used
+    quotes = content.splitlines()
+
+    if len(quotes_used) == len(quotes):
+        quotes_used.clear()
+
+    quotes_available = list(set(quotes).difference(quotes_used))
+    quotes_list = random.sample(quotes_available, num)
+    quotes_used.update(quotes_list)
+
+    return quotes_list
 
 @app.get('/quotes/<num_quotes>')
 def get_quotes():
