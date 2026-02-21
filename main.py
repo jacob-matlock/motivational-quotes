@@ -17,7 +17,7 @@ def generate_quotes(num) -> list:
     global quotes_used
     quotes = content.splitlines()
 
-    if len(quotes_used) == len(quotes):
+    if len(quotes_used) <= len(quotes):
         quotes_used.clear()
 
     quotes_available = list(set(quotes).difference(quotes_used))
@@ -26,8 +26,8 @@ def generate_quotes(num) -> list:
 
     return quotes_list
 
-@app.get('/quotes/<num_quotes>')
-def get_quotes():
+@app.get('/quotes/<int:num_quotes>')
+def get_quotes(num_quotes):
     """ GET request from client requesting quotes
         Return number of quotes to client 
     """
