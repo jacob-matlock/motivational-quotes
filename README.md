@@ -28,6 +28,10 @@ pip install flask
    python test.py
    ```
 
+## UML Diagram
+<img width="789" height="769" alt="image" src="https://github.com/user-attachments/assets/f168958f-f867-493b-9f1b-ed4ec48c9d28" />
+
+
 ## API Usage
 
 **Endpoint:** `GET /quotes/<num_quotes>`
