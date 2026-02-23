@@ -38,6 +38,10 @@ def get_quotes(num_quotes):
 
     Return number of quotes to client.
     """
+
+    if not isinstance(num_quotes, int) or num_quotes <= 0:
+        return jsonify({"error": "Number of Quotes Must Be a Positive Integer"}), 400
+
     quote_list = generate_quotes(num_quotes) #implement func
 
     return jsonify(quote_list), 200
