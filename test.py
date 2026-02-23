@@ -1,4 +1,4 @@
-import requests
+from flask import request
 
 print("=" * 60)
 print("Testing Motivational Quotes Microservice")
@@ -6,7 +6,7 @@ print("=" * 60)
 
 # Test 1: Basic report (all data)
 print("\nTest 1.0: Retrieve one quote")
-response = requests.get(f"http://localhost:1400/quotes/1")
+response = request.get(f"http://localhost:1400/quotes/1")
 print(f"Status Code: {response.status_code}")
 
 if response.status_code == 200:
@@ -19,7 +19,7 @@ else:
     print(f"✗ FAIL - Error: {response.text}")
 
 print("\nTest 2: Retrieve three quotes")
-response = requests.get(f"http://localhost:1400/quotes/3")
+response = request.get(f"http://localhost:1400/quotes/3")
 print(f"Status Code: {response.status_code}")
 
 if response.status_code == 200:
@@ -32,7 +32,7 @@ else:
 
 print("\nTest 3: Unique quotes")
 #current number of quotes in file: 17
-response = requests.get(f"http://localhost:1400/quotes/17")
+response = request.get(f"http://localhost:1400/quotes/17")
 print(f"Status Code: {response.status_code}")
 
 if response.status_code == 200:
