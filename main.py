@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
 import random
 
 
@@ -7,8 +7,12 @@ app = Flask(__name__)
 quotes_used = set()
 
 
-def generate_quotes(num) -> list:
-    """select num of quotes randomly from quotes.txt"""
+def generate_quotes(num: int) -> list:
+    """
+    This function selects a number of quotes randomly from quotes.txt based on the num provided. The function is
+    responsible for communicating with the global dictionary quotes_used to ensure that no quote is used twice before
+    each quote is used once.
+    """
 
     quotes_list = []
     with open("quotes.txt", "r", encoding="utf-8") as file:
@@ -28,8 +32,11 @@ def generate_quotes(num) -> list:
 
 @app.get('/quotes/<int:num_quotes>')
 def get_quotes(num_quotes):
-    """ GET request from client requesting quotes
-        Return number of quotes to client 
+    """
+    This is an endpoint for a GET request from a client requesting quotes. An integer must be provided in order for the
+    microservice to do any work.
+
+    Return number of quotes to client.
     """
     quote_list = generate_quotes(num_quotes) #implement func
 
