@@ -11,7 +11,7 @@ def generate_quotes(num) -> list:
     """select num of quotes randomly from quotes.txt"""
 
     quotes_list = []
-    with open("quotes.txt", "r") as file:
+    with open("quotes.txt", "r", encoding="utf-8") as file:
         content = file.read()
 
     global quotes_used
