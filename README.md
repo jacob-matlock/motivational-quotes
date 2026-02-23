@@ -57,3 +57,4 @@ pip install flask
 ## Error Codes
 
 - `200` - Success
+- `400` - Invalid Input
