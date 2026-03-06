@@ -4,7 +4,7 @@ print("=" * 60)
 print("Testing Motivational Quotes Microservice")
 print("=" * 60)
 
-# Test 1: Basic report (all data)
+# Test 1: Retrieve one quote
 print("\nTest 1.0: Retrieve one quote")
 response = requests.get(f"http://localhost:1400/quotes/1")
 print(f"Status Code: {response.status_code}")

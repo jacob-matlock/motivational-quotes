@@ -10,7 +10,7 @@ quotes_used = set()
 def generate_quotes(num: int) -> list:
     """
     This function selects a number of quotes randomly from quotes.txt based on the num provided. The function is
-    responsible for communicating with the global dictionary quotes_used to ensure that no quote is used twice before
+    responsible for communicating with the global set quotes_used to ensure that no quote is used twice before
     each quote is used once.
     """
 
@@ -21,7 +21,7 @@ def generate_quotes(num: int) -> list:
     global quotes_used
     quotes = content.splitlines()
 
-    if len(quotes_used) <= len(quotes):
+    if len(quotes_used) >= len(quotes):
         quotes_used.clear()
 
     quotes_available = list(set(quotes).difference(quotes_used))
@@ -42,7 +42,7 @@ def get_quotes(num_quotes):
     if not isinstance(num_quotes, int) or num_quotes <= 0:
         return jsonify({"error": "Number of Quotes Must Be a Positive Integer"}), 400
 
-    quote_list = generate_quotes(num_quotes) #implement func
+    quote_list = generate_quotes(num_quotes)
 
     return jsonify(quote_list), 200
 
